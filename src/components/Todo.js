@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import CreateTask from './CreateTask';
 import "./Todo.css";
 
 function Task({ task }) {
@@ -20,6 +20,12 @@ function Todo() {
     { title: "Paint something fun!", completed: false },
   ]);
 
+  
+const addTask = title => {
+    const newTasks = [...tasks, {title, completed: false}];
+    setTasks(newTasks)
+}
+
   return(<div className='todo-container'>
       <div className='header'>
           TODO-ITEMS
@@ -32,6 +38,9 @@ function Todo() {
                 key={index}
               />
           ))}
+      </div>
+      <div className="create-task">
+            <CreateTask addTask={addTask}/>
       </div>
   </div>)
 }
